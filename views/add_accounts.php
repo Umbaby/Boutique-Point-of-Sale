@@ -22,7 +22,7 @@
 
     <body>
     <div class="container">
-    <a class="menu" href="view_accounts.php">View Accounts</a>
+    <a class="menu" href="view_accounts.php">List of Accounts</a>
     <a class="menu" href="add_accounts.php">Create Account</a>
     <a class="menu" href="update_accounts.php">Update Account</a>
     <a class="menu" href="delete_accounts.php">Delete Account</a>
@@ -69,7 +69,7 @@
 <?php 
 }  
 echo "<a href='view_products.php'>Inventory</a><br>";
-//echo "<a href='view_accounts.php'>Accounts</a><br>";
+echo "<a href='view_accounts.php'>Accounts</a><br>";
 echo "<a href='add_to_cart.php'>Cashiering</a><br>";
 echo "<a href='view_transactions.php'>Transactions</a><br>";
 ?>

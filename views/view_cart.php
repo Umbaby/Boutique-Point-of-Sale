@@ -21,15 +21,16 @@
     </head>
 
     <body>
-
+	<div class="container">
     <a href="add_to_cart.php">Add to Cart</a>
     <a href="view_cart.php">Show Cart</a>    
 	<a href="change_quantity.php">Change Quantity</a>       
     <a href="delete_from_cart.php">Delete from Cart</a>    
-    
+    </div>
+	<div class="container">
 	<?php if ($result->num_rows>0) { ?>
 		<form action="<?php $_PHP_SELF; ?>" method="POST">
-			<table>
+			<table class="table table-striped">
 				<thead>
 					<tr>
 						<th>Product #</th>
@@ -58,7 +59,7 @@
 					?>
 				</tbody>
 			</table>
-			<table>
+			<table class="table table-striped">
 						<tr>
 							<td>Items:</td>
 							<td><input type="number" name="items" value="<?php echo $items; ?>" readonly/></td>
@@ -81,6 +82,7 @@
 						</tr>	
 			</table>
 		</form>
+	</div>
     </body>
 </html>
 	<?php if(isset($_POST['enter'])){ 
@@ -89,6 +91,7 @@
 			$total_purchase = $_POST['total'];
 			$change = $payment - $total_purchase;
 			?>
+		<div class="container">
 		<form action="<?php $_PHP_SELF; ?>" method="POST">
 			<table>
 				<tr>
@@ -109,19 +112,24 @@
 				</tr>
 			</table>
 		</form>
+		</div>
+		
 	<?php	
 		}
 	} else {
 		echo "<br><br>Add products to the Cart.";
-	} 
+	}  ?>
+<div class="container">
+	<?php
 	echo "<a href='view_products.php'>Inventory</a><br>";
-	//echo "<a href='view_accounts.php'>Accounts</a><br>";
+	echo "<a href='view_accounts.php'>Accounts</a><br>";
 	echo "<a href='add_to_cart.php'>Cashiering</a><br>";
 	echo "<a href='view_transactions.php'>Transactions</a><br>";
 	?>
 				<form action="login.php" method="POST">
 					<input type="submit" name="logout" value="Logout">
 				 </form>
+		</div>
 	<?php
 } else {
 	header('location:login.php');	

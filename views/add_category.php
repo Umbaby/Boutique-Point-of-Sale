@@ -15,11 +15,11 @@
 
     <body>
     <div class="container">
-	<a class="menu" href="view_products.php">View Products</a>
+	<a class="menu" href="view_products.php">List of Products</a>
 	<a class="menu" href="add_products.php">Add Product</a>
 	<a class="menu" href="update_products.php">Update Product</a>
 	<a class="menu" href="delete_products.php">Delete Product</a>
-    <a class="menu" href="view_categories.php">View Categories</a>
+    <a class="menu" href="view_categories.php">List of Categories</a>
     <a class="menu" href="add_category.php">Add Category</a>
     <a class="menu" href="update_categories.php">Update Category</a>
     <a class="menu" href="delete_categories.php">Delete Category</a>
@@ -39,7 +39,7 @@
     <div class="container">
 <?php
     
-    //echo "<a href='view_products.php'>Inventory</a><br>";
+    echo "<a href='view_products.php'>Inventory</a><br>";
     echo "<a href='view_accounts.php'>Accounts</a><br>";
     echo "<a href='add_to_cart.php'>Cashiering</a><br>";
     echo "<a href='view_transactions.php'>Transactions</a><br>";

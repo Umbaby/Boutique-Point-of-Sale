@@ -29,7 +29,7 @@
             <fieldset>
                 <legend><p class="head">Product You Want to Delete</p></legend>
                     <label for="product_name">Product Name</label><br>
-                        <input type="text" name="product_name" required /><br><br>
+                        <input type="text" name="product_name" required />
 
                         <input type="submit" name="submit" value="Search" />
             </fieldset>
@@ -76,25 +76,27 @@
             </fieldset>
         </form>
     </div>
-    <div class="container">
+    
                         <?php 
                     } else {
                          echo "No such product exists.";   
                         }
-                    }
-
-                    //echo "<a href='view_products.php'>Inventory</a><br>";
+                    } ?>
+    <div class="container">
+    <?php
+    echo "<a href='view_products.php'>Inventory</a><br>";
     echo "<a href='view_accounts.php'>Accounts</a><br>";
     echo "<a href='add_to_cart.php'>Cashiering</a><br>";
-    echo "<a href='view_transactions.php'>Transactions</a><br>";
+    echo "<a href='view_transactions.php'>Transactions</a><br>"; 
     ?>
             <form action="<?php $_PHP_SELF ?>" method="POST">
                 <input type="submit" name="logout" value="Logout">
              </form>
+             </div>
     <?php
-                } else {
+                      } else {
                     header('location:login.php');   
                 }?>
-    </div>
+       
     </body>
 </html>

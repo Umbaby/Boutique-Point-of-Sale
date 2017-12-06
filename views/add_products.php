@@ -63,7 +63,7 @@
 
 <?php 
 }
-//echo "<a href='view_products.php'>Inventory</a><br>";
+echo "<a href='view_products.php'>Inventory</a><br>";
 echo "<a href='view_accounts.php'>Accounts</a><br>";
 echo "<a href='add_to_cart.php'>Cashiering</a><br>";
 echo "<a href='view_transactions.php'>Transactions</a><br>";

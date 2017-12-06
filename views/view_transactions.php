@@ -19,12 +19,17 @@
     </head>
 
     <body>
-
+	<div class="container">
 	<a class="menu" href="view_transactions.php">Transaction Logs</a>
+
+	<?php if($_SESSION['usertype']=="admin"){ ?>
 	<a class="menu" href="delete_transactions.php">Remove Transactions</a>
-    
+	<?php } ?>
+
+    </div>
+	<div class="container">
 	<?php if ($result->num_rows>0) { ?>
-	<table>
+	<table class="table table-striped table-hover">
 	<thead>
 		<tr>
 			<th>Transaction ID</th>
@@ -33,8 +38,6 @@
 			<th>Products Sold</th>
 			<th>Total Items</th>
             <th>Total Amount</th>
-            <th>Customer Payment</th>
-            <th>Customer Change</th>
 		</tr>
 	</thead>
 	
@@ -47,27 +50,29 @@
                 <td><?php echo $row['3']; ?></td>
 				<td><?php echo $row['4']; ?></td>
 				<td><?php echo $row['5']; ?></td>
-                <td><?php echo $row['6']; ?></td>
-                <td><?php echo $row['7']; ?></td>
 			</tr>
         <?php } ?>
 	</tbody>
     </table>
+	</div>
     </body>
 </html>
 
 	<?php 
 } else {
 		echo "No transactions yet.";
-	} 
+	}  ?>
+<div class="container">
+	<?php
 	echo "<a href='view_products.php'>Inventory</a><br>";
-	//echo "<a href='view_accounts.php'>Accounts</a><br>";
+	echo "<a href='view_accounts.php'>Accounts</a><br>";
 	echo "<a href='add_to_cart.php'>Cashiering</a><br>";
 	echo "<a href='view_transactions.php'>Transactions</a><br>";
 	?>
 				<form action="login.php" method="POST">
 					<input type="submit" name="logout" value="Logout">
 				 </form>
+				 </div>
 	<?php
 } else {
 	header('location:login.php');	

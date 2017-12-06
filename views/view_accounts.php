@@ -20,14 +20,20 @@
 
     <body>
     <div class="container">
-    <a class="menu" href="view_accounts.php">View Accounts</a>
+    <a class="menu" href="view_accounts.php">List of Accounts</a>
+
+    <?php if($_SESSION['usertype']=="admin"){ ?>
+
     <a class="menu" href="add_accounts.php">Create Account</a>
     <a class="menu" href="update_accounts.php">Update Account</a>
     <a class="menu" href="delete_accounts.php">Delete Account</a>
+
+    <?php } ?>
+
     </div>
     <div class="container">
 	<?php if ($result->num_rows>0) { ?>
-	<table>
+	<table class="table table-striped">
 	<thead>
 		<tr>
 			<th>Id</th>
@@ -59,7 +65,6 @@
 	</tbody>
     </table>
     </div>
-    <div class="container">
     <?php 
 } else {
 		echo "No accounts yet.";
@@ -67,7 +72,7 @@
     <div class="container">
     <?php
     echo "<a href='view_products.php'>Inventory</a><br>";
-    //echo "<a href='view_accounts.php'>Accounts</a><br>";
+    echo "<a href='view_accounts.php'>Accounts</a><br>";
     echo "<a href='add_to_cart.php'>Cashiering</a><br>";
     echo "<a href='view_transactions.php'>Transactions</a><br>";
     ?>
@@ -79,6 +84,5 @@
  } else {
      header('location:login.php');
  } ?>
-    </div>
     </body>
 </html>

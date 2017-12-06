@@ -25,7 +25,7 @@
             <fieldset>
                 <legend><p class="head">Account You Want to Update</p></legend>
                     <label for="username">Username</label><br>
-                        <input type="text" name="username" required /><br><br>
+                        <input type="text" name="username" required />
 
                         <input type="submit" name="submit" value="Search" />
             </fieldset>
@@ -80,24 +80,27 @@
             </fieldset>
         </form>
     </div>
-    <div class="container">
+    
                         <?php 
                     } else {
                          echo "No such account exists.";   
                         }
-                    }
+                    } ?>
+<div class="container">
+                    <?php
                     echo "<a href='view_products.php'>Inventory</a><br>";
-                    //echo "<a href='view_accounts.php'>Accounts</a><br>";
+                    echo "<a href='view_accounts.php'>Accounts</a><br>";
                     echo "<a href='add_to_cart.php'>Cashiering</a><br>";
                     echo "<a href='view_transactions.php'>Transactions</a><br>";
                     ?>
                                 <form action="login.php" method="POST">
                                     <input type="submit" name="logout" value="Logout">
                                  </form>
+                                 </div>
                     <?php
                 } else {
                     header('location:login.php');  
                 } ?>
-    </div>
+    
     </body>
 </html>

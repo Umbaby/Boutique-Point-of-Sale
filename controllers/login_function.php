@@ -10,10 +10,12 @@
         $query = "SELECT * FROM users WHERE username = '$login_username' AND password = '$login_password'";
         
         $result = $conn->query($query);
+        $row = $result->fetch_array();
 
             if ($result->num_rows>0) {
                 // user is successfully logged in
                 $Logged_In = TRUE;
+                $_SESSION['usertype'] = $row['6'];
             } else {
                 echo "Invalid input.";
             }

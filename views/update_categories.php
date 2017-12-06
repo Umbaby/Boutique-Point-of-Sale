@@ -29,7 +29,7 @@
             <fieldset>
                 <legend><p class="head">Category You Want to Update</p></legend>
                     <label for="category_name">Category Name</label><br>
-                        <input type="text" name="category_name" required /><br><br>
+                        <input type="text" name="category_name" required />
 
                         <input type="submit" name="submit" value="Search" />
             </fieldset>
@@ -59,24 +59,27 @@
             </fieldset>
         </form>
     </div>
-    <div class="container">
+    
                         <?php 
                     } else {
                          echo "No such category exists.";   
                         }
-                    }
+                    } ?>
+<div class="container">
+                    <?php
                     echo "<a href='view_products.php'>Inventory</a><br>";
-                    //echo "<a href='view_accounts.php'>Accounts</a><br>";
+                    echo "<a href='view_accounts.php'>Accounts</a><br>";
                     echo "<a href='add_to_cart.php'>Cashiering</a><br>";
                     echo "<a href='view_transactions.php'>Transactions</a><br>";
                     ?>
                                 <form action="login.php" method="POST">
                                     <input type="submit" name="logout" value="Logout">
                                  </form>
+                                 </div>
                     <?php
                 } else { 
                     header('location:login.php');   
                 }?>
-    </div>
+    
     </body>
 </html>
