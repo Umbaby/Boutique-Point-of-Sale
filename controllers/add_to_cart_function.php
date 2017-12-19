@@ -1,11 +1,11 @@
 <?php include "../models/DBConnection.php";
-
-    if(isset($_POST['submit2'])){
-        $product_number = $_POST['product_number'];
-        $product_name = $_POST['product_name'];
-        $product_price = $_POST['product_price'];
-        $description = $_POST['description'];
-        $quantity = $_POST['quantity'];
+    $check = null;
+    if(isset($_POST['submitcart'])){
+        $product_number = mysqli_real_escape_string($conn, $_POST['product_number']);
+        $product_name = mysqli_real_escape_string($conn, $_POST['product_name']);
+        $product_price = mysqli_real_escape_string($conn, $_POST['product_price']);
+        $description = mysqli_real_escape_string($conn, $_POST['description']);
+        $quantity = mysqli_real_escape_string($conn, $_POST['quantity']);
 
         $amount = $product_price * $quantity;
 
@@ -20,14 +20,30 @@
             $result = $conn->query($query);
 
             if($result){
-                echo "Product was added";
+                //echo "Product was added";
+                $check = true;
+            } else {
+                $check = false;
+                //echo "Error";
+            }
+        } else {
+            //echo "Quantity exceeds the stock available.";
+        }
+    }
+
+    /*if(isset($_POST['typeahead'])){
+        $searchTerm = $_POST['typeahead'];
+        $query = "SELECT product_name FROM products WHERE product_name LIKE '%$searchTerm%'";
+            $result = $conn->query($query);
+            $array = array();
+            if($result){
+                while ($row = $result->fetch_array()){
+                    $array[] = $row['0'];
+                }
             } else {
                 echo "Error";
             }
-        } else {
-            echo "Quantity exceeds the stock available.";
-        }
-    }
+    }*/
 
     if(isset($_POST['logout'])){
         unset($_SESSION['name']);

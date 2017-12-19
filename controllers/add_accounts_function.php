@@ -1,24 +1,32 @@
 <?php 
     include "../models/DBConnection.php";
+    $password_check = null;
+    $success_check = null;
 
     if(isset($_POST['submit'])){
-        $name = $_POST['name'];
-        $age = $_POST['age'];
-        $mobile = $_POST['mobile'];
-        $gender = $_POST['gender'];
-        $username = $_POST['username'];
-        $account_type = $_POST['account_type'];
-        $password = $_POST['password'];
+        $name = mysqli_real_escape_string($conn, $_POST['name']);
+        $age = mysqli_real_escape_string($conn, $_POST['age']);
+        $mobile = mysqli_real_escape_string($conn, $_POST['mobile']);
+        $gender = mysqli_real_escape_string($conn, $_POST['gender']);
+        $username = mysqli_real_escape_string($conn, $_POST['username']);
+        $account_type = mysqli_real_escape_string($conn, $_POST['account_type']);
+        $password = mysqli_real_escape_string($conn, $_POST['password']);
+        $confirm_password = mysqli_real_escape_string($conn, $_POST['confirm']); 
 
-        $query = "INSERT INTO users (name,age,mobile_number,gender,username,user_type,password)
-                  VALUES ('$name','$age','$mobile','$gender','$username','$account_type','$password');";
+        if($password==$confirm_password){
+            $password_check = true;
+            $query = "INSERT INTO users (name,age,mobile_number,gender,username,user_type,password)
+                    VALUES ('$name','$age','$mobile','$gender','$username','$account_type','$password');";
 
-        $result = $conn->query($query);
+            $result = $conn->query($query);
 
-        if($result){
-            echo "Account successfully added";
+            if($result){
+                $success_check = true;
+            } else {
+                $success_check = false;
+            }
         } else {
-            echo "Error";
+            $password_check = false;
         }
     }
 

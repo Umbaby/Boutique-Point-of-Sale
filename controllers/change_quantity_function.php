@@ -1,11 +1,12 @@
 <?php include "../models/DBConnection.php";
+    //$cart_check = null;
 
     if(isset($_POST['submit2'])){
-        $product_number = $_POST['product_number'];
-        $product_name = $_POST['product_name'];
-        $product_price = $_POST['product_price'];
-        $description = $_POST['description'];
-        $quantity = $_POST['quantity'];
+        $product_number = mysqli_real_escape_string($conn, $_POST['product_number']);
+        $product_name = mysqli_real_escape_string($conn, $_POST['product_name']);
+        $product_price = mysqli_real_escape_string($conn, $_POST['product_price']);
+        $description = mysqli_real_escape_string($conn, $_POST['description']);
+        $quantity = mysqli_real_escape_string($conn, $_POST['quantity']);
 
         $amount = $product_price * $quantity;
 
@@ -20,12 +21,12 @@
             $result = $conn->query($query);
 
             if($result){
-                echo "Quantity was changed";
+                //echo "Quantity was changed";
             } else {
                 echo "Error";
             }
         } else {
-            echo "Quantity exceeds the stock available.";
+            //echo "Quantity exceeds the stock available.";
         }
     }
 
