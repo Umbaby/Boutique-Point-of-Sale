@@ -19,6 +19,7 @@
                 $_SESSION['full_name'] = $row['1'];
                 $_SESSION['pass'] = $_POST['login_password'];
                 $_SESSION['usertype'] = $row['6'];
+
             } else {
                 $Logged_In = false;
             }

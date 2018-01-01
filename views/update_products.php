@@ -49,7 +49,7 @@
   
         <div class="top-nav notification-row">
         <form action="login.php" method="POST">
-            <input type="submit" class="" name="logout" value="Logout(<?php echo $_SESSION['name']; ?>)">
+            <input type="submit" class="" name="logout" value="Logout(<?php if(isset($_SESSION['name'])){ echo $_SESSION['name']; } else { echo $_COOKIE['user_name']; } ?>)">
         </form>  
         </div>
           
@@ -239,7 +239,7 @@
                     </table>
 
                     <input type="submit" name="submit2" value="Change">
-                    <a href="view_products.php">Cancel</a>
+                    <a href="update_products.php">Cancel</a>
         </form><br>
                                                   
                         <?php 

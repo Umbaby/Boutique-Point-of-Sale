@@ -1,7 +1,7 @@
 <?php session_start();
     include "../controllers/change_quantity_function.php"; 
     
-    if(isset($_SESSION['name'])){
+    if(isset($_SESSION['name'])||isset($_COOKIE['user_name'])){
 
         $query2 = "SELECT * FROM cart";
         $result2 = $conn->query($query2);

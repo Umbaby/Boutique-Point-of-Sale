@@ -1,7 +1,7 @@
 <?php session_start();
     include "../controllers/add_to_cart_function.php";
     
-    if(isset($_SESSION['name'])){
+    if(isset($_SESSION['name'])||isset($_COOKIE['user_name'])){
     ?>
 <!DOCTYPE html> 
 <html lang="en">
@@ -166,7 +166,7 @@
           <div class="col-lg-12">
             <h3 class="page-header"><i class="fa fa-users"></i> Cashiering</h3>
             <ol class="breadcrumb">
-              <li><i class="fa fa-uers"></i><a href="view_cart.php">Cashiering</a></li>
+              <li><i class="icon_genius"></i><a href="view_cart.php">Cashiering</a></li>
               <li><a href="add_to_cart.php"> <i class="fa fa-plus"></i> Add Product to Cart</a></li>        
             </ol>
           </div>
@@ -228,7 +228,7 @@
                                         </table>
 
                                         <input type="submit" name="submitcart" value="Add to cart">
-                                        <a href="view_cart.php">Cancel</a>
+                                        <a href="add_to_cart.php">Cancel</a>
                                 </div>
                             </form><br>
     

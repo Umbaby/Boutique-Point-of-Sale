@@ -2,13 +2,15 @@
 
 	include "../models/DBConnection.php"; 
 
-	if(isset($_SESSION['name'])){
+	if(isset($_SESSION['name'])||isset($_COOKIE['user_name'])){
 
     $query = "SELECT * FROM products ORDER BY product_name ASC";
 	
-	$result = $conn->query($query);
+    $result = $conn->query($query);
 
-	$query2 = "SELECT * FROM categories";
+    $p_num = $result->num_rows;
+
+    $query2 = "SELECT * FROM categories";
     
     $result2 = $conn->query($query2);
 
@@ -184,14 +186,16 @@
             <section class="panel">
 			  
 	<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-		&nbsp&nbsp&nbspCategory:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		&nbsp&nbspCategory:&nbsp&nbsp&nbsp
 		<select id="category" name="category" required>
 			<option value="all" name="all">All</option>
             <?php while($row2=$result2->fetch_array()){ ?>
                 <option value="<?php echo $row2['0']; ?>" name="<?php echo $row2['0']; ?>"> <?php echo $row2['1']; ?> </option>
             <?php } ?>
-        </select>&nbsp&nbsp&nbsp
-		<input type="submit" name="submit" value="Search"/><br>
+        </select>&nbsp
+		<input type="submit" name="submit" value="Search"/>
+    &nbsp&nbsp<strong><span style='color:violet'>Total Products: <?php echo $p_num; ?></span></strong>
+    &nbsp&nbsp&nbspLegend: <span style='color:green'>Green: Enough Stocks Available (5 Above)</span>&nbsp&nbsp <span style='color:orange'>Orange: Few Stocks Remaining (5 and Below)</span>&nbsp&nbsp <span style='color:red'>Red : No Stock at All</span>
 	</form>
 	<br>
 	
@@ -227,7 +231,7 @@
 							?>
 							</td>
 							<td><?php echo "Php ".$row['5']; ?></td>
-							<td><?php if($row['4']>0){ echo $row['4'];} else { echo "Out of stock";} ?></td>
+							<td><?php if($row['4']>5){ echo "<span style='color:green'>" . $row['4'] . "</span>" ; } else if($row['4']<=5&&$row['4']>0){ echo "<span style='color:orange'>" . $row['4'] . "</span>" ; } else { echo "<span style='color:red'>Out of stock</span>";} ?></td>
 							<td><?php echo $row['3']; ?></td>
 							<td><?php echo $row['6']; ?></td>
 						</tr>

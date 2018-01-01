@@ -1,7 +1,7 @@
 <?php session_start(); 
     include "../controllers/login_function.php"; 
     
-    if(isset($_SESSION['name'])){
+    if(isset($_SESSION['name'])||isset($_COOKIE['user_name'])){
       
     ?>
 <!DOCTYPE html>
@@ -61,7 +61,7 @@
 
       <div class="top-nav notification-row">
       <form action="login.php" method="POST">
-          <input type="submit" class="" name="logout" value="Logout(<?php echo $_SESSION['name']; ?>)">
+          <input type="submit" class="" name="logout" value="Logout(<?php if(isset($_SESSION['name'])){ echo $_SESSION['name']; } else { echo $_COOKIE['user_name']; } ?>)">
       </form>  
       </div>
         

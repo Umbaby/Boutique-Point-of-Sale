@@ -20,7 +20,7 @@
 
     <body class="login-img3-body">
             <div class="container">
-            <?php if (isset($_SESSION['name'])){ 
+            <?php if (isset($_SESSION['name'])||isset($_COOKIE['user_name'])){ 
                 header("location:index.php");
              ?>
 
@@ -42,7 +42,7 @@
                                     <input type="password" id="login_password" name="login_password" class="form-control" placeholder="Password" required/><br><br>
                             </div>  
                             <!--<label class="checkbox">
-                                <input type="checkbox" value="remember-me"> Remember me
+                                <input type="checkbox" name="remember" value="remember-me"> Remember me
                             </label>-->
 
                         <input type="submit" class="btn btn-primary btn-lg btn-block" name="submit" value="Login"><br><br>

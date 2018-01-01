@@ -1,7 +1,7 @@
 <?php session_start();
     include "../controllers/update_categories_function.php"; 
     
-    if(isset($_SESSION['name'])&&$_SESSION['usertype']=="admin"){
+    if((isset($_SESSION['name'])&&$_SESSION['usertype']=="admin")||isset($_COOKIE['user_name'])){
     ?>
 <!DOCTYPE html> 
 <html lang="en">
@@ -216,7 +216,7 @@
                     </table>
 
                     <input type="submit" name="submit2" value="Change">
-                    <a href="view_categories.php">Cancel</a>
+                    <a href="update_categories.php">Cancel</a>
 
         </form>
     

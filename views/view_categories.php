@@ -1,7 +1,7 @@
 <?php session_start();
 	include "../models/DBConnection.php"; 
 
-	if(isset($_SESSION['name'])){
+	if(isset($_SESSION['name'])||isset($_COOKIE['user_name'])){
 
     $query = "SELECT * FROM categories ORDER BY category_name ASC";
     $result = $conn->query($query);

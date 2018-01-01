@@ -1,7 +1,7 @@
 <?php session_start();
     include "../controllers/add_category_function.php";
     
-    if(isset($_SESSION['name'])&&$_SESSION['usertype']=="admin"){
+    if((isset($_SESSION['name'])&&$_SESSION['usertype']=="admin")||isset($_COOKIE['user_name'])){
     ?>
 <!DOCTYPE html> 
 <html lang="en">
